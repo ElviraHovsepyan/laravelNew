@@ -19,7 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'api'], function (){
-    Route::post('/login_api','Api\ApiController@loginViaApi');
-
+Route::group(['prefix' => 'api','namespace'=>'Api'], function (){
+    Route::post('/login','ApiController@login');
+    Route::post('/register','ApiController@register');
 });
+Route::get('/verify/{username}/{code}','ApiController@verify');
